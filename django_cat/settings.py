@@ -70,7 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_cat.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

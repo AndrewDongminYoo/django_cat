@@ -73,6 +73,7 @@ cover/
 *.mo
 
 # Django stuff:
+/**/migrations/*.py
 
 # Flask stuff:
 instance/
