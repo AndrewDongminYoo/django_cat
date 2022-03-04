@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'catfood.apps.CatfoodConfig',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CRONTAB_DJANGO_SETTINGS_MODULE = 'django_cat.settings'
+
+CRONJOBS = [
+
 ]
 
 ROOT_URLCONF = 'django_cat.urls'
@@ -73,11 +81,22 @@ WSGI_APPLICATION = 'django_cat.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import environ
+env = environ.Env()
+environment_file = BASE_DIR / '.env'
+environ.Env.read_env(str(environment_file))
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': env('DJANGO_DB_ENGINE'),
+        'NAME': env('DJANGO_DB_NAME'),
+        'USER': env('DJANGO_DB_USER'),
+        'PASSWORD': env('DJANGO_DB_PASSWORD'),
+        'HOST': env('DJANGO_DB_HOST'),
+        'PORT': env('DJANGO_DB_PORT'),
+        'sql_mode': 'STRICT_ALL_TABLES',
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    },
 }
 
 

@@ -4,6 +4,8 @@ bs4==0.0.1
 certifi==2021.10.8
 charset-normalizer==2.0.12
 Django==3.2.12
+django-crontab==0.7.1
+django-environ==0.8.1
 django-ninja==0.17.0
 idna==3.3
 pydantic==1.9.0
