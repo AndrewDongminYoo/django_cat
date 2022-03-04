@@ -90,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': env('DJANGO_DB_ENGINE'),
         'NAME': env('DJANGO_DB_NAME'),
-        'USER': env('DJANGO_DB_USER'),
+        'USER': env('DJANGO_DB_USERNAME'),
         'PASSWORD': env('DJANGO_DB_PASSWORD'),
         'HOST': env('DJANGO_DB_HOST'),
         'PORT': env('DJANGO_DB_PORT'),
@@ -98,7 +98,6 @@ DATABASES = {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
