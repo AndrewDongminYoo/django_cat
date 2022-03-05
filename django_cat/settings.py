@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'django_cat.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-import environ
-env = environ.Env()
+from environ import Env
+env = Env()
 environment_file = BASE_DIR / '.env'
-environ.Env.read_env(str(environment_file))
+Env.read_env(str(environment_file))
 
 DATABASES = {
     'default': {
