@@ -1,13 +1,3 @@
-import os
-os.environ.setdefault("PYTHONUNBUFFERED;", "1")
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_cat.settings")
-import django
-
-if 'setup' in dir(django):
-    django.setup()
-
-from catfood.models import Formula, Brand
-
 result = dict()
 result["A La CARTE"] = ['https://alacarte4k9.com.au/product/chicken-brown-rice/', 'https://alacarte4k9.com.au/product/salmon-brown-rice/']
 result["AATU"] = ['https://aatu.co.uk/products/aatu-cat-salmon', 'https://aatu.co.uk/products/aatu-cat-duck', 'https://aatu.co.uk/products/aatu-for-cats-85-15-chicken', 'https://aatu.co.uk/products/aatu-chicken-quail-wet', 'https://aatu.co.uk/products/aatu-turkey-goose-wet', 'https://aatu.co.uk/products/aatu-chicken-pheasant-wet', 'https://aatu.co.uk/products/aatu-salmon-wet']
