@@ -6,7 +6,6 @@ class Brand(models.Model):
     en_name = models.CharField(max_length=255, unique=True, verbose_name='브랜드명')
     ko_name = models.CharField(max_length=255, verbose_name='한글명')
     site = models.URLField(unique=True, verbose_name='사이트')
-    description = models.TextField(null=True, blank=True, verbose_name='설명')
 
     def __str__(self):
         return self.en_name

@@ -94,9 +94,10 @@ DATABASES = {
         'PASSWORD': env('DJANGO_DB_PASSWORD'),
         'HOST': env('DJANGO_DB_HOST'),
         'PORT': env('DJANGO_DB_PORT'),
-        'sql_mode': 'STRICT_ALL_TABLES',
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-    },
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_ALL_TABLES'",
+        }
+    }
 }
 
 # Password validation
