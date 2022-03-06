@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from environ import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = Env()
+environment_file = BASE_DIR / '.env'
+Env.read_env(str(environment_file))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xsjjctsaien0hq=+1#(gls1gxggut%h$9v)n36jn0=*jgkrb6w'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,10 +85,6 @@ WSGI_APPLICATION = 'django_cat.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-from environ import Env
-env = Env()
-environment_file = BASE_DIR / '.env'
-Env.read_env(str(environment_file))
 
 DATABASES = {
     'default': {
