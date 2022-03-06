@@ -3,7 +3,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from catfood.models import Formula
+from first import result, Formula
 import time
 
 
@@ -17,6 +17,7 @@ class WebScrapper:
         self.driver.implicitly_wait(10)
         self.driver.minimize_window()
         self.brand_name = brand_name
+        self.url_list = result[brand_name]
         self.type_of_selector = type_of_selector
         self.result_list = []
 
@@ -82,21 +83,21 @@ class WebScrapper:
               JAVASCRIPT='',
               ):
         for url in self.url_list:
-            product = Formula()
+            product = Formula.objects.get_or_create(url=url)[0]
             product.brand = self.brand_name
             product.url = url
             self.driver.get(url)
             self.execute(JAVASCRIPT)
             time.sleep(2)
-            product['title'] = self.driver.title
+            product.title = self.driver.title
             if INGREDIENTS:
-                product['ingredients'] = self.get_text(INGREDIENTS)
+                product.ingredients = self.get_text(INGREDIENTS)
             if ANALYSIS:
-                product['analysis'] = self.get_text(ANALYSIS)
+                product.analysis = self.get_text(ANALYSIS)
             if ADDITIVES:
-                product['additive'] = self.get_text(ADDITIVES)
+                product.additive = self.get_text(ADDITIVES)
             if CALORIE_CONTENT:
-                product['calorie'] = self.get_text(CALORIE_CONTENT)
+                product.calorie = self.get_text(CALORIE_CONTENT)
             print(product)
             self.result_list.append(product)
         self.driver.quit()
