@@ -1,17 +1,5 @@
-import os
+from first import Formula, Brand, os
 import json
-os.environ.setdefault("PYTHONUNBUFFERED;", "1")
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_cat.settings")
-import django
-
-if 'setup' in dir(django):
-    django.setup()
-
-from catfood.models import Formula, Brand
-
-data_path = os.path.join(os.curdir, "data")
-files = [x for x in os.listdir(data_path) if x.endswith(".json")]
-print(os.path.realpath(os.curdir))
 
 
 def insert_formula(data):
@@ -40,6 +28,10 @@ def insert_formula(data):
 
 
 def upload(name=None):
+    data_path = os.path.join(os.curdir, "data")
+    files = [x for x in os.listdir(data_path) if x.endswith(".json")]
+    print(os.path.realpath(os.curdir))
+
     for fp in files:
         if name and name != fp:
             pass
