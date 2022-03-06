@@ -21,8 +21,10 @@ class Formula(models.Model):
     ingredients = models.TextField(null=True, blank=True, verbose_name='사용된 원료')
     analysis = models.TextField(null=True, blank=True, verbose_name='등록성분량')
     calorie = models.CharField(max_length=45, null=True, blank=True, verbose_name='열량')
-    additives = models.TextField(null=True, blank=True, verbose_name='추가 성분')
     description = models.TextField(null=True, blank=True, verbose_name='설명')
+
+    def __str__(self):
+        return self.title
 
 
 class Market(models.Model):
@@ -32,3 +34,13 @@ class Market(models.Model):
 
     def __str__(self):
         return self.eng_name
+
+
+class Crawler(models.Model):
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name='브랜드')
+    image = models.CharField(max_length=200, null=True, blank=True, verbose_name='이미지 SELECTOR')
+    description = models.CharField(max_length=200, null=True, blank=True, verbose_name='설명 SELECTOR')
+    key_benefits = models.CharField(max_length=200, null=True, blank=True, verbose_name='장점 SELECTOR')
+    ingredients = models.CharField(max_length=200, null=True, blank=True, verbose_name='원료 SELECTOR')
+    analysis = models.CharField(max_length=200, null=True, blank=True, verbose_name='성분량 SELECTOR')
+    calorie = models.CharField(max_length=200, null=True, blank=True, verbose_name='열량 SELECTOR')
