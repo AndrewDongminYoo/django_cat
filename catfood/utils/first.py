@@ -7,7 +7,7 @@ import django
 if 'setup' in dir(django):
     django.setup()
 
-from catfood.models import Formula, Brand
+from catfood.models import Formula, Brand, Crawler
 
 result = dict()
 result["A La CARTE"] = ['https://alacarte4k9.com.au/product/chicken-brown-rice/', 'https://alacarte4k9.com.au/product/salmon-brown-rice/']
